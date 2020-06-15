@@ -1,0 +1,102 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {},
+        "license": {}
+    },
+    "paths": {
+        "/directions": {
+            "get": {
+                "tags": [
+                    "directions"
+                ],
+                "summary": "Get all directions",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.Direction"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Appointment": {
+            "type": "object",
+            "properties": {
+                "doctor_id": {
+                    "type": "integer"
+                },
+                "patient_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Direction": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "users": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.User"
+                    }
+                }
+            }
+        },
+        "model.User": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "appointments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Appointment"
+                    }
+                },
+                "asDoctorAppointments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Appointment"
+                    }
+                },
+                "birthdate": {
+                    "type": "string"
+                },
+                "directions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/model.Direction"
+                    }
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "middle_name": {
+                    "type": "string"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

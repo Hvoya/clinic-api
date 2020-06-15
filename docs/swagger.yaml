@@ -1,0 +1,65 @@
+definitions:
+  model.Appointment:
+    properties:
+      doctor_id:
+        type: integer
+      patient_id:
+        type: integer
+    type: object
+  model.Direction:
+    properties:
+      name:
+        type: string
+      users:
+        items:
+          $ref: '#/definitions/model.User'
+        type: array
+    type: object
+  model.User:
+    properties:
+      age:
+        type: integer
+      appointments:
+        items:
+          $ref: '#/definitions/model.Appointment'
+        type: array
+      asDoctorAppointments:
+        items:
+          $ref: '#/definitions/model.Appointment'
+        type: array
+      birthdate:
+        type: string
+      directions:
+        items:
+          $ref: '#/definitions/model.Direction'
+        type: array
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      middle_name:
+        type: string
+      phone:
+        type: string
+      role:
+        type: integer
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /directions:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.Direction'
+            type: array
+      summary: Get all directions
+      tags:
+      - directions
+swagger: "2.0"
